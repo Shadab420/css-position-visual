@@ -4,14 +4,36 @@ $(document).ready(function(){
     let body = $('#body');
     let positionStyle = $('#position-style');
     let positionExplanation = $('#position-explanation');
+    let parent = $('#parent');
+    let allChild = $('#parent .child');
     let childSelect = $('#child-select');
     let positionSelect = $('#position-select');
     let toggleBtn = $('#toggle-checkbox');
 
-    function applyStyle(parent, child, position){
+
+    function resetDiv(){
+        parent.css({
+            'position': 'static'
+        });
+
+        allChild.css({
+            'position': 'static',
+            'top': '',
+            'right': '',
+            'bottom': '',
+            'left': '',
+            'margin': '0 0'
+
+        })
+
+
+    }
+
+
+
+    function applyStyle(child, position){
         
-        $('#parent').removeAttr('style');
-        $('#parent *').removeAttr('style');
+        resetDiv();
         
         switch(position){
             case 0:
@@ -159,7 +181,7 @@ $(document).ready(function(){
                     'right': '0'
                 });
 
-                setTimeout(()=>{ alert("Understood? He he he :D"); $('#parent *').removeAttr('style'); return;}, 300);
+                setTimeout(()=>{ alert("Understood? He he he :D"); resetDiv(); return;}, 300);
 
                 return;
     
@@ -297,7 +319,6 @@ $(document).ready(function(){
                 
                 let child = $('#'+childSelect.val());
                 let position = positionSelect.val();
-                let parent = $('#parent');
 
                 if(position !== ''){
                     
@@ -305,7 +326,7 @@ $(document).ready(function(){
                     positionExplanation.text(positions[position].description)
 
                     position = parseInt(position);
-                    applyStyle(parent, child, position);
+                    applyStyle(child, position);
                 }
                 
             }
@@ -315,12 +336,11 @@ $(document).ready(function(){
                 {
                     let child = $('#'+childSelect.val());
                     let position = parseInt(positionSelect.val());
-                    let parent = $('#parent');
 
                     positionStyle.text(positions[position].style)
                     positionExplanation.text(positions[position].description)
                     
-                    applyStyle(parent, child, position);
+                    applyStyle(child, position);
                 }
                 else{
                     alert('Please select a child!');
