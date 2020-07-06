@@ -339,6 +339,11 @@ $(document).ready(function(){
             'min-height': '100vh',
         });
 
+        $('.title').css({
+            'color': '#4736c5',
+            'text-shadow': '1px 4px 4px #FF0000'
+        });
+
         $('.selection-div').css({
             'box-shadow': '0px 5px 10px #000'
         });
@@ -364,6 +369,11 @@ $(document).ready(function(){
             'background-size': '',
             'background-repeat': '',
             'min-height': '',
+        });
+
+        $('.title').css({
+            'color': '',
+            'text-shadow': ''
         });
 
         $('.selection-div').css({
